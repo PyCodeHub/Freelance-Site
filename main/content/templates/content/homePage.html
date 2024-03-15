@@ -1,0 +1,83 @@
+{%  extends 'content/base.html' %}
+{% load static %}
+
+{%  block title %} Home|Page {% endblock %}
+
+{%  block link %}  {% endblock %}
+
+{%  block body %}
+
+<div class="container-fluid bg-light p-3" style="position: relative; top: -15px;">
+    <div class="img-header" style="display: inline-block;">
+        <img src="{% static 'content/imgs/header.jpeg' %}"
+            alt="" class="img-fluid mb-5">
+    </div>
+
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-5" style="width: 600px; display: inline-block;">
+                <img src="{% static 'content/imgs/one.jpg' %}"
+                    class="img-fluid rounded-start w-100" style="height: 450px;" alt="...">
+            </div>
+            <div class="col-md-8 " style="display: inline-block;  width: 370px;">
+                <div class="card-body p-3">
+                    <h3 class="card-title">What is <small class="h3 text-success">Django</small> Freelancer?</h3>
+                    <p class="card-text w-100" style="line-height:1.7;">With Django Freelancer, you can find freelancers
+                        very easily and select and interview them, so easily entrust the work to Kardan.
+                        Django Freelancer, as a freelancing site, provides freelancers with the opportunity to earn
+                        money through remote work. Also, it is possible to outsource web design and programming
+                        projects, content production, graphic design, typing, translation and many other skills through
+                        Django Freelancer. If you want to become a freelancer and earn money through remote work or
+                        outsource your projects, join Django Freelancer today.
+                    </p>
+                    <a href="#" class="card-text btn btn-primary w-100"> Start </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-8 " style="display: inline-block;  width: 370px;">
+                <div class="card-body">
+                    <h3 class="card-title">Advantages of <small class="h3 text-success">Django</small> Freelancer?</h3>
+                    <p class="card-text" style="line-height:1.7;">Outsourcing projects to professional freelancers has
+                        many benefits for your business. Freelancers can do your project at a much lower cost than
+                        companies due to the lack of administrative overhead, office and advertising costs. Also,
+                        instead of referring to several companies and collections, you can receive more than dozens of
+                        proposals from professional experts by registering the project in Carlenser, and using the
+                        secure payment system, you can safely entrust the work to Kardonesh.</p>
+                    <a href="#" class="card-text btn btn-primary w-100"> Start </a>
+                </div>
+            </div>
+            <div class="col-md-5" style="width: 600px; display: inline-block; text-align: right;">
+                <img src="{% static 'content/imgs/to.avif' %}"
+                    class="img-fluid rounded-start w-100" style="height: 450px; text-align: right;" alt="...">
+            </div>
+        </div>
+    </div>
+    {% if request.user.status == "Employer" %}
+        <div class="card text-center">
+            <h5 class="card-header">Create Project</h5>
+            <div class="card-body">
+                <h5 class="card-title">Make your project right now</h5>
+                <p class="card-text">Freelancers see your projects and send you requests for completion</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div><br>
+    {% else %}
+        <div class="card text-center">
+            <h5 class="card-header">Receive the project</h5>
+            <div class="card-body">
+                <h5 class="card-title">Start right now</h5>
+                <p class="card-text">Employers are promoting the entire project</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <!---------------------- Footer ----------------->
+    {% include 'content/includes/footer.html' %}
+    
+{% endblock %}

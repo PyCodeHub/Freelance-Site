@@ -1,0 +1,67 @@
+{% extends 'content/base.html' %}
+
+{%  block title %} Edit|Project {% endblock %}
+
+{%  block link %}  {% endblock %}
+
+{%  block body %} 
+
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+
+                <form action="" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+
+
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title" value="{{form.instance.title}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="number" class="form-control" id="exampleFormControlInput1" name="time" placeholder="Time" value="{{form.instance.time}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="number" class="form-control" id="exampleFormControlInput1" name="price" placeholder="$Price" value="{{form.instance.price}}">
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            name="content">  {{form.instance.content}} </textarea>
+                    </div>
+
+                    <p>Skills:</p>
+                    <select class="form-select" multiple aria-label="Default select example" name="skills"
+                        style="height: 200px;">
+                        {% for i in form.skills %}
+                        <option value="1" class="mt-0">{{i}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <p class="mt-3">Categorys:</p>
+                    <select class="form-select mt-3" multiple aria-label="Default select example" name="category"
+                        style="height: 200px;">
+                        {% for i in form.category %}
+                        <option value="1" class="mt-0">{{i}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <input type="submit" value="Save" class="btn btn-primary w-100 mt-3">
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

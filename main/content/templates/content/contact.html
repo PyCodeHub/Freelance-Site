@@ -1,0 +1,42 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Contact|Page {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+<div class="container p-3">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">+98</span>
+            <input type="text" class="form-control" placeholder="Optional" aria-label="Username"
+                aria-describedby="addon-wrapping" name="phone">
+        </div>
+
+        <div class="input-group flex-nowrap mt-3">
+            <span class="input-group-text" id="addon-wrapping">Email</span>
+            <input type="email" class="form-control" placeholder="name@example.com" aria-label="Username"
+                aria-describedby="addon-wrapping" name="email">
+        </div>
+
+        <select class="form-select mt-3" aria-label="Default select example" name="subject">
+            {% for i in form.subject %}
+                <option selected>{{i}}</option>
+            {% endfor %}
+            
+        </select>
+
+        <div class="mb-3">
+            <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3" placeholder="Message"
+                name="message"></textarea>
+        </div>
+
+        <input type="submit" class="btn btn-primary w-100" value="Send">
+    </form>
+</div>
+
+
+{% endblock %}

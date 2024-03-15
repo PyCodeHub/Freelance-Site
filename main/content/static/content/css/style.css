@@ -1,0 +1,20 @@
+.nav-item-main {
+  font-family: cursive;
+  font-size: 1.1rem;
+}
+
+.nav-item-main:hover {
+  transform: scale(1.1);
+}
+.contact:hover {
+  transform: scale(1.1);
+}
+.img_profile:hover{
+  transform: scale(1.1);
+}
+.img_alarm:hover{
+  transform: scale(1.1) rotate(12deg);
+}
+.logout:hover{
+  transform: scale(1.1);
+}

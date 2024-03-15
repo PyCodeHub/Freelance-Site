@@ -1,0 +1,45 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %} Register|Page {% endblock %}
+
+
+
+{% block body %}
+
+<div class="registration-form" style="text-align: center;">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="Freelancer"
+                >
+            <label class="form-check-label" for="inlineRadio1">Freelancer</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="Employer"
+               >
+            <label class="form-check-label" for="inlineRadio2">Employer</label>
+        </div>
+
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="border-radius: 0px;">+98</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="phone">
+        </div>
+
+        <input type="submit" class="btn btn-primary w-100 mb-3 " value="Send">
+
+        <div style="text-align: left;">
+            <a href="{% url 'login' %}" style="text-decoration: none; text-align: left;">Already registered?</a>
+        </div>
+
+    </form>
+    <div class="social-media">
+        <h5>Subscribe Chanel Youtube :) </h5>
+    </div>
+</div>
+
+{% endblock %}

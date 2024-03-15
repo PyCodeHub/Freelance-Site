@@ -1,0 +1,91 @@
+{% extends 'content/base.html' %}
+{% load static %}
+{% block title %} Detail|Page {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card mt-3">
+        <div class="card-header">
+            {{project.updated}} /  Created by {{project.user.username}} 
+            {% if is_save %}
+                <a href="{% url 'save_project' project.id  %}" style="float: right;"> <img style="width: 20px;" src="{% static 'content/imgs/save.png'%}" alt=""> </a>
+            {% else %}
+                 <a href="{% url 'save_project' project.id  %}" style="float: right;"> <img style="width: 20px;" src="{% static 'content/imgs/un_save.png'%}" alt=""> </a>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{project.title}} </h5>
+            <p class="card-text">{{project.content}}</p>
+
+        </div>
+        
+        <div class="skills" style="text-align: center;">
+            <br>
+            <p>Skills :</p>
+            <ul class="list-unstyled">
+                {% for i in project.skills.all %}
+                <a href="#" class="btn btn-outline-dark mt-2">
+                    <li class="list-inline-item">{{i.title}}</li>
+                </a>
+                {% endfor %}
+            </ul>
+
+            
+        </div> 
+        
+        <div class="p-2">
+            <small style="text-align: left;">Project deadline : {{project.time}} Day</small>
+            <small style="text-align: left; float: right; position: relative; bottom: -4px;">Reward : <small class="text-success" style="font-size: larger;">${{project.price}}</small>  </small>
+            <br><br>
+            <a href="{% url 'request_freelancer' project.id %}" class="btn btn-primary w-100"> Request </a>
+        </div>
+
+        <hr>
+        
+        <ul class="list-unstyled">
+            <small class="h6" style="margin-left: 10px; margin-top: 5px;">Category : </small>
+            {% for i in project.category.all %}
+            <a href="#" class="btn btn-outline-dark ">
+                <li class="list-inline-item">{{i.title}}</li>
+            </a>
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <p class="h6 mt-5">Sugested :</p> <hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for i in suggestion_projects %}
+            <div class="card border-light mb-3 col-lg-6 col-md-6 mt-4 d-inline-block">
+                <div class="card-header">{{i.created}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <p class="card-text">{{i.content}}</p>
+                    <hr>
+                    <div class="skills" style="text-align: center;">
+                        <p>Skills :</p>
+                        <ul class="list-unstyled">
+                            {% for skill in i.skills.all %}
+                                <a href="#" class="btn btn-outline-dark mt-2"><li class="list-inline-item">{{skill.title}}</li></a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-success" style="width: 200px">$ {{i.price}}</a>
+                    <a href="{% url 'detail_project' i.slug %}" class="btn btn-dark" style="width: 200px">More...</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

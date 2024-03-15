@@ -1,0 +1,38 @@
+{% extends 'content/base.html' %}
+{% load static %}
+
+{% block title %} Saves|Page {% endblock %}
+
+{% block link %}  {% endblock %}
+
+
+{% block body %} 
+
+<div class="container">
+    <div class="row">
+        {% for i in saves %}
+            <div class="card border-light mb-3 col-lg-6 col-md-6 mt-4 d-inline-block">
+                <div class="card-header">{{i.project.created}}
+                    <a href="{% url 'save_project' i.project.id  %}" style="float: right;"> <img style="width: 20px;" src="{% static 'content/imgs/save.png'%}" alt=""> </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.project.title}}</h5>
+                    <p class="card-text">{{i.project.content}}</p>
+                    <hr>
+                    <div class="skills" style="text-align: center;">
+                        <p>Skills :</p>
+                        <ul class="list-unstyled">
+                            {% for skill in i.project.skills.all %}
+                                <a href="#" class="btn btn-outline-dark mt-2"><li class="list-inline-item">{{skill.title}}</li></a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-success" style="width: 200px">$ {{i.project.price}}</a>
+                    <a href="{% url 'detail_project' i.project.slug %}" class="btn btn-dark" style="width: 200px">More...</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

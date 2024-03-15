@@ -1,0 +1,67 @@
+{% extends 'content/base.html' %}
+
+{% block title%} List|Projects {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+    {% if requests %}
+        <div class="container mt-5">
+        
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Freelancer</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in requests %}
+                        <tr>
+                        <td> <a href="{% url 'profile_freelancer' i.user.id %}"> <img src="{{i.user.userFreelancer.image.url}}" alt="IMG" style="width: 30px;"> </a> </td>
+                        <td>{{i.project.title}}</td>
+                        <td>
+                            <a href="{% url 'accept_request' i.id %}" class="btn btn-success p-1" style="width: 60px;"> Accept </a>
+                            <a href="{% url 'reject_request' i.id %}" class="btn btn-danger p-1" style="width: 60px;"> Reject </a>
+                        </td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <p class="mt-5">Employment:</p>
+            <hr>
+
+            <table class="table">
+                <thead>
+                    
+                  <tr>
+                    <th scope="col">Employer</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in employments %}
+                    <tr>
+                      <td> <img src="{{i.freelancer.user.userFreelancer.image.url}}" alt="" style="width: 30px; "> </td>
+                      <td>{{i.project.title}}</td>
+                      <td>
+                          <a href="{% url 'cancel_recruitment' i.id %}" class="btn btn-danger p-1" style="width: 60px;"> Cancel </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            
+        
+        </div>
+    {% else %}
+    
+        <h6>No Request</h6>
+
+    {% endif %}
+
+{% endblock %}

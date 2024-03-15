@@ -1,0 +1,80 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Edit|Employer {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+
+                <form action="" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+
+                        <input class="form-control" type="file" id="formFile" name="image" value="{{form_profile.instance.image}}">
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="phone" value="{{form_account.instance.phone}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{form_account.instance.email}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="username" value="{{form_account.instance.username}}">
+                    </div>
+
+                    <select class="form-select" multiple aria-label="Default select example" name="skills"
+                        style="height: 200px;">
+
+                        {% for i in form_account.skills %}
+                            <option value="1" class="mt-0">{{i}}</option>
+                        {% endfor %}
+                        
+
+                    </select>
+
+                    <select class="form-select mt-3" aria-label="Default select example" name="city">
+
+                        {% for i in form_profile.city %}
+                            <option value="1">{{i}}</option>
+                        {% endfor %}
+
+
+                    </select>
+
+                    <div class="mb-3 mt-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            name="about">  {{form_profile.instance.about}} </textarea>
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="cv" value="{{form_profile.instance.cv}}">
+                    </div>
+
+                    <input type="submit" value="Save" class="btn btn-primary w-100">
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

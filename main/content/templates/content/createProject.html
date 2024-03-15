@@ -1,0 +1,57 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Create|Project {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+<div class="container w-75 mt-5">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="title">
+        </div>
+
+        <div class="mb-3">
+
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Days" name="time">
+        </div>
+        <div class="mb-3">
+
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="$Price" name="price">
+        </div>
+
+        <div class="mb-3">
+
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                placeholder="Explain a little about your project" name="content"></textarea>
+        </div>
+
+
+        <label for="exampleFormControlTextarea1" class="form-label mt-2">Categorys:</label>
+        <select class="form-select" multiple aria-label="Default select example" name="category">
+                {% for i in form.category %}
+                    <option value="1" class="mt-0">{{i}}</option>
+                {% endfor %}
+        </select>
+
+        <label for="exampleFormControlTextarea1" class="form-label mt-2">Skills:</label>
+        <select class="form-select" multiple aria-label="Default select example" name="skills">
+
+            
+            {% for i in form.skills %}
+                <option value="1" class="mt-0">{{i}}</option>
+            {% endfor %}
+            
+
+        </select>
+        
+        <input type="submit" value="Create" class="btn btn-primary mt-2 w-100">
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Profile|Page {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card">
+                    <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                            <img src="{{user.image.url}}" alt="Generic placeholder image"
+                                class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                            <a href="{% url 'edit_employer' request.user.id %}" type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                style="z-index: 1;">
+                                Edit profile
+                            </a>
+                        </div>
+                        <div class="ms-3" style="margin-top: 130px;">
+                            <h5>{{user.user.username}}</h5>
+
+                        </div>
+                    </div>
+                    <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                        <div class="d-flex justify-content-end text-center py-1" style="text-align: left;">
+                            <div style="margin-right: 18px;">
+                                <p class="mb-1 h5">{{projects.count}}</p>
+                                <p class="small text-muted mb-0">Post</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body p-4 text-black">
+
+                        <div class="mb-5">
+                            <p class="lead fw-normal mb-1">Personal Information</p>
+                            <div class="p-4" style="background-color: #f8f9fa;">
+                                <p>
+                                    Phone : {{user.user.phone}}
+                                </p>
+                            </div>
+
+                            <div class="p-4 mt-1" style="background-color: #f8f9fa;">
+                                <p>
+                                    Email : {{user.user.email}}
+                                </p>
+                            </div>
+
+                            <div class="p-4 mt-1" style="background-color: #f8f9fa;">
+                                <p>
+                                    Username : {{user.user.username}}
+                                </p>
+                            </div>
+
+                            <hr>
+                            <p>Projects: {{projects.count}}</p>
+                            {% for i in projects %}
+                            <div class="card mt-3">
+                                <div class="card-header">
+                                  {{i.created}}
+                                </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">{{i.title}} </h5>
+                                  <p class="card-text">{{i.content}}</p>
+                                  <a href="{% url 'edit_project' i.id %}" class="btn btn-warning" style="width: 294px;">Edit</a>
+                                  <a href="{% url 'delete_project' i.id %}" class="btn btn-danger" style="width: 294px;" >Delete</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

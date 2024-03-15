@@ -1,0 +1,34 @@
+{% extends 'content/base.html' %}
+{% load static %}
+
+{% block title %} Freelancers|Page {% endblock %}
+
+{% block link %} <link rel="stylesheet" href="{% static 'content/css/freelancers.css/' %}"> {% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        {% for i in freelancers %}
+        <!-- Single Advisor-->
+        
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp " data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb"><img src="{{i.userFreelancer.image.url}}" alt="" class="img-fluid"></div>
+                    <!-- Team Details-->
+                    <a href="{% url 'profile_freelancer' i.id %}" class="text-dark" style="text-decoration: none;">
+                        <div class="single_advisor_details_info">
+                            <h6 style="font-size: larger;">{{i.username}}</h6>
+                            <p class="designation">{{i.status}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

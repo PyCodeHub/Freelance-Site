@@ -1,0 +1,46 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Edit|Employer {% endblock %}
+
+{% block link %}  {% endblock %}
+
+{% block body %} 
+
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        
+                        <input class="form-control" type="file" id="formFile" name="image" value="{{form_profile.instance.image}}">
+                    </div>
+                    
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="phone"  value="{{form_account.instance.phone}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{form_account.instance.email}}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="username" value="{{form_account.instance.username}}">
+                    </div>
+   
+                    <input type="submit" value="Save" class="btn btn-primary w-100">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

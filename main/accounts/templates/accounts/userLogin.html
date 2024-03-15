@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %} Login|Page {% endblock %}
+
+{% block body %}
+
+<div class="registration-form" style="text-align: left;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+
+        <div class="input-group mb-3 mt-3">
+
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" placeholder="Number Phone" name="phone">
+        </div>
+
+        <div class="input-group mb-3 mt-3">
+
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" placeholder="Password" name="password">
+        </div>
+
+        <input type="submit" class="btn btn-primary w-100 mb-3" value="Login">
+
+        <div style="text-align: center;">
+            <a href="{% url 'register' %}" style="text-decoration: none; margin-right: 50px;">Don't have an account?</a>
+        <a href="{% url 'password_reset_form' %}" style="text-decoration: none;">Did you forget your password?</a>
+        </div>
+
+    </form>
+    <div class="social-media">
+        <h5>Subscribe Chanel Youtube :) </h5>
+    </div>
+</div>
+
+{% endblock %}

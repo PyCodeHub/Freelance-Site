@@ -1,0 +1,45 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Recruitment|Page {% endblock %}
+
+{% block link %}  {% endblock %}
+
+
+{% block body %} 
+
+<br>
+<div class="container mt-3">
+    <div class="card mb-3 w-100">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{freelancer.user.userFreelancer.image.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        <label for="exampleFormControlTextarea1" class="form-label">The desired project:</label>
+                        <br>
+                        <select class="form-select" aria-label="Default select example" name="project">
+                            {% for i in projects %}
+                            <option selected value="{{i.id}}">{{i.title}}</option>
+                            {% endfor %}
+                            
+                        </select>
+                        <br>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                placeholder="Explain about the desired project..." rows="3" name="content"></textarea>
+                        </div>
+
+                        <input type="submit" value="Send" class="btn btn-primary w-100">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

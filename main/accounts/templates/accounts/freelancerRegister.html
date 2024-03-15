@@ -1,0 +1,50 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %} Freelancer|Form {% endblock %}
+
+{% block body %}
+
+<div class="registration-form" style="text-align: center;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+
+        <select class="form-select" multiple aria-label="Default select example" name="skills">
+            {% for i in form.skills  %}
+                <option value="1" class="mt-0">{{i}}</option>
+            {% endfor %}
+        </select>
+
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="border-radius: 0px;">Username</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="username">
+        </div>
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="border-radius: 0px;">Email</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="email">
+        </div>
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="border-radius: 0px;">Password</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="password">
+        </div>
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+                style="border-radius: 0px;">ConfirmPassword</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="password2">
+        </div>
+
+        <input type="submit" class="btn btn-primary w-100" value="Create">
+
+    </form>
+    <div class="social-media">
+        <h5>Subscribe Chanel Youtube :) </h5>
+    </div>
+</div>
+
+{% endblock %}

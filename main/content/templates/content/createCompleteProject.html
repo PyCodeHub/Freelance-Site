@@ -1,0 +1,22 @@
+{% extends 'content/base.html' %}
+{% load static %}
+
+{% block title %} Contact|Page {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+    <div class="container" style="text-align: center;">
+        
+        <div class="alert alert-success w-50 p-3" role="alert" style="text-align: center; margin: auto; margin-top: 130px;">
+            <img src="{% static 'content/imgs/complete.jpg' %}" alt="" style="width: 30px; border-radius: 50%;"> <br> <br>
+            Your project has been reviewed and will be posted on the site in 24 hours
+            <br><br>
+
+            <a href="{% url 'home' %}" class="btn btn-outline-success"> I realized </a>
+          </div>  
+        
+    </div>
+
+{% endblock %}

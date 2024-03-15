@@ -1,0 +1,25 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Update|Page {% endblock %}
+
+{% block link %}  {% endblock %}
+
+
+{% block body %} 
+
+<br>
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                style="max-height: 200px; height: 200px;"
+                name="content">  {{form.instance.content}} </textarea>
+        </div>
+
+        <input type="submit" value="Send" class="btn btn-primary w-100">
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'content/base.html' %}
+
+{% block title%} List|Projects {% endblock %}
+
+{% block link %} {% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    {% if requests %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Employer</th>
+            <th scope="col">Project</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in requests %}
+            <tr>
+              <td>{{i.project.user.username}}</td>
+              <td>{{i.project.title}}</td>
+              <td>
+                  <a href="{% url 'cancel_request' i.id %}" class="btn btn-danger p-1" style="width: 60px;"> Cancel </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <p>You did not request anything from the year :(</p>
+        <hr>
+      {% endif %}
+
+      {% if employment %}
+      <br>
+      <p class="mt-5">Employments: </p>
+      <hr>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Employer</th>
+            <th scope="col">Project</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in employment %}
+            <tr>
+              <td>{{i.employer.username}}</td>
+              <td>{{i.project.title}}</td>
+              <td>
+                  <a href="{% url 'accept_recruitment' i.id%}" class="btn btn-success p-1" style="width: 60px;"> Accept </a>
+                  <a href="{% url 'reject_recruitment' i.id %}" class="btn btn-danger p-1" style="width: 60px;"> Reject </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <br><br>
+      <p class="mt-5">You did not receive any requests to complete the project :(</p>
+      <hr>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

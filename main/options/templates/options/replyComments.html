@@ -1,0 +1,41 @@
+{% extends 'content/base.html' %}
+
+{% block title %} Reply|Page {% endblock %}
+
+{% block link %}  {% endblock %}
+
+
+{% block body %} 
+
+<div class="container">
+    <div class="card">
+        <!-- Comments  -->
+        <p class="card-header" style="display: inline-block;"> <img
+                src="{{comment.user.userEmployer.image.url}}"
+                alt="IMG" class="img-fluid" style="width: 30px; border-radius: 50%;">
+            {{comment.user.username}} Commented :  
+        
+        </p>
+            
+        <div class="card-body">
+            <p class="card-text">{{comment.content}}</p>
+        </div>
+    </div>
+    <br>
+</div>
+<br>
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                style="max-height: 200px; height: 200px;"
+                placeholder="Tell us what you think about this freelancer" name="content"></textarea>
+        </div>
+
+        <input type="submit" value="Send" class="btn btn-primary w-100">
+    </form>
+</div>
+
+{% endblock %}
